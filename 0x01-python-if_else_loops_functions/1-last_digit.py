@@ -6,6 +6,9 @@ if num < 0:
     num *= -1
 
 last = num % 10
+if number < 0:
+    last *= -1
+
 print("Last digit of {} is {}".format(number, last), end="")
 if last > 5:
     print(" and is greater than 5", end="")
