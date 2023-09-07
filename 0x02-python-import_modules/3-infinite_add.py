@@ -7,7 +7,7 @@ if __name__ == "__main__":
     num = len(argv) - 1
 
     if num <= 1:
-        print("{}".format(0 if num == 0 else argv[1]))
+        print("{}".format(0 if num == 0 else int(argv[1])))
 
     else:
         sum = 0
@@ -16,4 +16,4 @@ if __name__ == "__main__":
             sum += int(argv[i])
             i += 1
 
-    print("{}".format(sum))
+    print("{:d}".format(sum))
