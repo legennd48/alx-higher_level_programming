@@ -7,7 +7,7 @@ if __name__ == "__main__":
     num = len(argv) - 1
 
     if num <= 1:
-        print("{}".format(0 if num == 0 else int(argv[1])))
+        print("{:d}".format(0 if num == 0 else int(argv[1])))
 
     else:
         sum = 0
