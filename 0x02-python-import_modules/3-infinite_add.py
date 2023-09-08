@@ -8,6 +8,7 @@ if __name__ == "__main__":
 
     if num <= 1:
         print("{}".format(0 if num == 0 else int(argv[1])))
+        exit(0)
 
     else:
         sum = 0
