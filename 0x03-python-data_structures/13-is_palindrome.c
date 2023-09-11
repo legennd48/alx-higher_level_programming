@@ -10,10 +10,12 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *slow = *head, *fast = *head, *prev_slow = NULL;
-	listint_t *second_half = NULL, *mid_node = NULL;
+	listint_t *second_half, *mid_node = NULL;
 	int is_palindrome = 1;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
+		return (0);
+	if (*head == NULL)
 		return (1);
 	while (fast != NULL && fast->next != NULL)
 	{
@@ -26,30 +28,24 @@ int is_palindrome(listint_t **head)
 		mid_node = slow;
 		slow = slow->next;
 	}
-	else
-		mid_node = NULL;
+
 	second_half = reverse_list(&slow);
-	while (second_half != NULL)
-	{
-		if (second_half->n != slow->n)
-		{
-			is_palindrome = 0;
-			break;
-		}
-		second_half = second_half->next;
-		slow = slow->next;
-	}
+	is_palindrome = compare_lists(*head, second_half);
+
 	reverse_list(&second_half);
+
 	if (mid_node != NULL)
 	{
 		prev_slow->next = mid_node;
 		mid_node->next = second_half;
 	}
 	else
+	{
 		prev_slow->next = second_half;
+	}
+
 	return (is_palindrome);
 }
-
 
 /**
  * reverse_list - Reverse a singly linked list
@@ -71,7 +67,6 @@ listint_t *reverse_list(listint_t **head)
 	*head = prev;
 	return (prev);
 }
-
 
 /**
  * compare_lists - Compare two singly linked lists
