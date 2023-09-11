@@ -31,7 +31,6 @@ int is_palindrome(listint_t **head)
 		buff[index++] = current->n;
 		current = current->next;
 	}
-
 	for (index = 0; index <= (list_size / 2); index++)
 	{
 		if (buff[index] != buff[list_size - index - 1])
