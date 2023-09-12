@@ -5,41 +5,43 @@
  * @head: pointer to head-node of list
  * Return: 0 if it's not or 1 if it is a palindrome
  */
-int is_palindrome(listint_t **head)
+int is_palindrome(head)
+listint_t **head;
 {
-	listint_t *current = *head;
-	unsigned int list_size = 0, index = 0;
-	int *buff = NULL;
+	listint_t *slow = *head, *fast = *head, *prev_slow = NULL;
+	int is_palindrome = 1;
+	listint_t *first_half = *head, *second_half = slow,  *mid_node = NULL;
 
 	if (head == NULL)
 		return (0);
+
 	if (*head == NULL)
 		return (1);
-	while (current != NULL)
+
+	while (fast != NULL && fast->next != NULL)
 	{
-		current = current->next;
-		list_size += 1;
-	}
-	if (list_size == 1)
-		return (1);
-	buff = malloc(sizeof(int) * list_size);
-	if (buff == NULL)
-		return (0);
-	current = *head;
-	while (current != NULL && index < list_size)
-	{
-		buff[index++] = current->n;
-		current = current->next;
-	}
-	for (index = 0; index <= (list_size / 2); index++)
-	{
-		if (buff[index] != buff[list_size - index - 1])
-		{
-			free(buff);
-			return (0);
-		}
+		fast = fast->next->next;
+		prev_slow = slow;
+		slow = slow->next;
 	}
 
-	free(buff);
-	return (1);
+	if (fast != NULL)
+	{
+		mid_node = slow;
+		slow = slow->next;
+	}
+	/* Compare the first and second halves of the list while traversing. */
+	while (second_half != NULL)
+	{
+		if (first_half->n != second_half->n)
+		{
+			is_palindrome = 0;
+			break;
+		}
+		first_half = first_half->next;
+		second_half = second_half->next;
+	}
+	/* Restore the second half to its original order. */
+	prev_slow->next = mid_node;
+	return (is_palindrome);
 }
