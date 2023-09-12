@@ -3,7 +3,7 @@
 /**
  * print_python_list_info - prints basic info about python list
  * @p: pointer to a Python object of type PyObject
-
+ */
 void print_python_list_info(PyObject *p)
 {
 	int size, allocated, i;
