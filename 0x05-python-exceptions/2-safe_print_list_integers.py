@@ -4,15 +4,12 @@
 def safe_print_list_integers(my_list=[], x=0):
     n = 0
 
-    while (n < x):
+    for i in range(x):
         try:
-            if (my_list[n].isdigit()):
-                print("{:d}".format(my_list[n]))
+            print("{:d}".format(my_list[i]), end="")
+            n += 1
+        except (TypeError, ValueError, IndexError):
+            continue
 
-            else:
-                continue
-
-        except IndexError:
-            break
-
-        n += 1
+    print()
+    return (n)
