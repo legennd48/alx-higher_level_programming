@@ -5,30 +5,30 @@
 class Square:
     ''' class defines a square. '''
     def __init__(self, size=0, position=(0, 0)):
-        ''' Instantiation of private instance attribute.
+        """
+        Initializes square
         Args:
-        param1: size of the square which must be int
-        param2:position of new square
-        '''
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = size
+            size (int): defaults to 0 if none; don't use __size to call setter
+            position (int): tuple of two positive integers
+        """
+        self.size = size
         self.position = position
-
-    def area(self):
-        ''' returns the current square area'''
-        return (self.__size * self.__size)
 
     @property
     def size(self):
-        ''' retireves current size of square '''
+        """"
+        retrieves and returns size
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
-        ''' sets size of square '''
+        """
+        sets new value to size
+        Args:
+            value: the value to be set
+        """
+
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -36,28 +36,38 @@ class Square:
         else:
             self.__size = value
 
+    def area(self):
+        """
+        Calculates and returns area of square
+        """
+        return (self.__size * self.__size)
+
     def my_print(self):
-        ''' Prints the square using #. '''
-        size = self.__size
-        if (size == 0):
+        if self.__size == 0:
             print()
-        for i in range(self.__position[1]):
-            print()
-        for i in range(size):
-            print(" " * self.__position[0], end="")
-            print("#" * size)
+        else:
+            print("\n" * self.__position[1], end="")
+            print("\n".join([" " * self.__position[0] +
+                             "#" * self.__size
+                             for rows in range(self.__size)]))
 
     @property
     def position(self):
-        ''' retireves current square position '''
-        return (self.__position)
+        """
+        retrieves position
+        """
+        return self.__position
 
     @position.setter
     def position(self, value):
-        ''' stes the value of position '''
-        if (not isinstance(value, tuple) or
-                len(value) != 2 or
-                not all(isinstance(num, int) for num in value) or
-                not all(num >= 0 for num in value)):
+        """
+        Sets new value
+        Args:
+            value: int value to be set
+        """
+        if not isinstance(value, tuple) or len(value) != 2 or \
+                not all(isinstance(num, int) for num in value) or \
+                not all(num >= 0 for num in value):
             raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
+        else:
+            self.__position = value
