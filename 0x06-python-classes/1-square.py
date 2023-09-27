@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+''' defines class square '''
+
+
 class Square:
     ''' This class defines a square by, size '''
     def __init__(self, size):
