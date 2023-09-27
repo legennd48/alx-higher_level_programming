@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' defines a square '''
+''' defines class Square '''
 
 
 class Square:
@@ -27,11 +27,12 @@ class Square:
 
     @property
     def position(self):
-        """Get/set the position of the square."""
+        """retrieves the position of the square."""
         return self.__position
 
     @position.setter
     def position(self, value):
+        ''' sets the position of the square '''
         if not isinstance(value, tuple) or len(value) != 2 or \
                 not all(isinstance(num, int) for num in value) or \
                 not all(num >= 0 for num in value):
@@ -39,8 +40,8 @@ class Square:
         self.__position = value
 
     def area(self):
-        """Calculate the area of the square."""
-        return self.__size ** 2
+        """Calculates and return the area of the square."""
+        return (self.__size ** 2)
 
     def my_print(self):
         """Print the square using #."""
