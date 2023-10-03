@@ -1,0 +1,89 @@
+======================
+4-print_square
+======================
+
+This module tests the print square function of '#' in a row
+
+=====================
+
+First we import the function
+::
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Normal usage works as expected
+::
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+Tests print 8 square
+
+::
+
+    >>> print_square(8)
+    ########
+    ########
+    ########
+    ########
+    ########
+    ########
+    ########
+    ########
+
+works with square 0 but prints nothing
+
+::
+
+    >>> print_square(0)
+
+It also works with 1 square
+
+::
+
+    >>> print_square(1)
+    #
+
+Causes TypeError when None is supplied
+
+::
+
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Causes ValueError when negative num is supplied
+
+::
+
+    >>> print_square(-10)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+ValueError when adding a negative float
+
+::
+
+    >>> print_square(-10.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+TypeError when adding a string in the size parameter
+
+::
+
+    >>> print_square("Master")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+TyeError when no argument is supplied
+
+::
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+::

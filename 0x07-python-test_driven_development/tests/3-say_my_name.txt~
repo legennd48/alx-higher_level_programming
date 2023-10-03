@@ -1,0 +1,85 @@
+=============
+3-say_my_name
+=============
+
+This is the unit test that tests print of first and last name
+
+=============
+
+First we import the function
+
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+=============
+SUCCESS CASES
+=============
+
+Normal usage
+
+::
+
+    >>> say_my_name("Grand", "Master")
+    My name is Grand Master
+
+
+Test only one Name
+
+::
+
+    >>> say_my_name("Master")
+    My name is Master
+
+==========
+FAIL CASES
+==========
+
+TypeError when non string args are supplied as either argument
+::
+
+    >>> say_my_name(98, "King")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+    >>> say_my_name("Edward", 8)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+TypeError when arguments are empty or non.
+
+::
+
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+TypeError if is None the input
+
+::
+
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+
+TypeError when a list or dic is supplied
+
+::
+
+    >>> say_my_name({"Grand: mass", "tytant: 0"}, 8)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+    >>> say_my_name("Aurora", {"Eden", "prutz"})
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+::
+
+    >>> say_my_name({"GReat", "panda: 0"}, "eyen")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
