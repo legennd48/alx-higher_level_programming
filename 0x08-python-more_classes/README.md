@@ -1,0 +1,1 @@
+Directory maded to help me learn more of oop in python
