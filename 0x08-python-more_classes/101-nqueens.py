@@ -26,48 +26,54 @@ def is_safe(board, row, col, N):
     # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
-            return (False)
+            return False
 
     # Check upper left diagonal
     for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
         if board[i][j] == 1:
-            return (False)
+            return False
 
     # Check upper right diagonal
     for i, j in zip(range(row, -1, -1), range(col, N)):
         if board[i][j] == 1:
-            return (False)
+            return False
 
     return True
 
-def solve_nqueens_util(board, row, N):
+
+def solve_nqueens_util(board, row, N, solutions):
+
     if row == N:
-        print_solution(board)
-        return (True)
+        solution = [[i, row.index(1)] for i, row in enumerate(board)]
+        solutions.append(solution)
+        return True
 
     res = False
     for col in range(N):
         if is_safe(board, row, col, N):
             board[row][col] = 1
-            res = solve_nqueens_util(board, row + 1, N) or res
+            res = solve_nqueens_util(board, row + 1, N, solutions) or res
             board[row][col] = 0
 
-    return (res)
+    return res
+
 
 def solve_nqueens(N):
+
     if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
     board = [[0 for _ in range(N)] for _ in range(N)]
-    if not solve_nqueens_util(board, 0, N):
+    solutions = []
+    solve_nqueens_util(board, 0, N, solutions)
+
+    if not solutions:
         print("No solution exists")
         sys.exit(1)
 
-def print_solution(board):
-    for row in board:
-        print(" ".join(["Q" if cell else "." for cell in row]))
-    print()
+    return solutions
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -80,4 +86,6 @@ if __name__ == "__main__":
         print("N must be a number")
         sys.exit(1)
 
-    solve_nqueens(N)
+    solutions = solve_nqueens(N)
+    for solution in solutions:
+        print(solution)
