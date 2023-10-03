@@ -12,6 +12,7 @@ class Rectangle:
     number_of_instances = 0
     print_symbol = '#'
     def __init__(self, width=0, height=0):
+
         '''initialize the rectangle
         Args:
             width (int): the width of the rectangle
@@ -68,12 +69,9 @@ class Rectangle:
         ''' Returns printable representation of rectangle using '#' '''
         if self.__width == 0 or self.__height == 0:
             return ('')
-        rect = []
-        for i in range(self.__height):
-            [rect.append(self.print_symbol) for m in range(self.__width)]
-            if i != self.__height - 1:
-                rect.append('\n')
-        return (''.join(rect))
+        image = "\n".join([str(self.print_symbol) * self.__width
+                           for rows in range(self.__height)])
+        return (image)
 
     def __repr__(self):
         """ String representation to recreate new instance """
