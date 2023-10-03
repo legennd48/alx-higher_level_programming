@@ -18,18 +18,19 @@ class Rectangle:
             width (int): the width of the rectangle
             height (int): the height of the rectangle
         '''
-
         self.__width = width
         self.__height = height
         type(self).number_of_instances += 1
 
     @property
     def width(self):
+
         ''' Width Getter '''
         return self.__width
 
     @width.setter
     def width(self, value):
+
         ''' Sets the value for width '''
 
         if not isinstance(value, int):
@@ -40,13 +41,14 @@ class Rectangle:
 
     @property
     def height(self):
+
         ''' Height Getter '''
         return self.__height
 
     @height.setter
     def height(self, value):
-        ''' Sets the value for height '''
 
+        ''' Sets the value for height '''
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -54,12 +56,14 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+
         ''' Return the area of rectangle'''
 
         area = self.__width * self.__height
         return (area)
 
     def perimeter(self):
+
         '''that returns the rectangle perimeter'''
 
         if (self.__width == 0 or self.__height == 0):
@@ -69,6 +73,7 @@ class Rectangle:
         return (perimeter)
 
     def __str__(self):
+
         ''' Returns printable representation of rectangle using '#' '''
 
         if self.__width == 0 or self.__height == 0:
@@ -78,12 +83,12 @@ class Rectangle:
         return (image)
 
     def __repr__(self):
-        """ String representation to recreate new instance """
 
+        """ String representation to recreate new instance """
         return ("Rectangle({:d}, {:d})".format(self.__width, self.__height))
 
     def __del__(self):
-        ''' prints message when an instance is deleted '''
 
+        ''' prints message when an instance is deleted '''
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
