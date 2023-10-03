@@ -12,6 +12,7 @@ class Rectangle:
     number_of_instances = 0
     print_symbol = '#'
     def __init__(self, width=0, height=0):
+
         '''initialize the rectangle
         Args:
             width (int): the width of the rectangle
@@ -23,11 +24,13 @@ class Rectangle:
 
     @property
     def width(self):
+
         ''' Width Getter '''
         return self.__width
 
     @width.setter
     def width(self, value):
+
         ''' Sets the value for width '''
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -38,12 +41,13 @@ class Rectangle:
     @property
     def height(self):
         ''' Height Getter '''
+
         return self.__height
 
     @height.setter
     def height(self, value):
-        ''' Sets the value for height '''
 
+        ''' Sets the value for height '''
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -51,13 +55,14 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+
         ''' Return the area of rectangle'''
         area = self.__width * self.__height
         return (area)
 
     def perimeter(self):
-        '''that returns the rectangle perimeter'''
 
+        '''that returns the rectangle perimeter'''
         if (self.__width == 0 or self.__height == 0):
             perimeter = 0
         else:
@@ -65,6 +70,7 @@ class Rectangle:
         return (perimeter)
 
     def __str__(self):
+
         ''' Returns printable representation of rectangle using '#' '''
         if self.__width == 0 or self.__height == 0:
             return ('')
@@ -76,16 +82,19 @@ class Rectangle:
         return (''.join(rect))
 
     def __repr__(self):
+
         """ String representation to recreate new instance """
         return ("Rectangle({:d}, {:d})".format(self.__width, self.__height))
 
     def __del__(self):
+
         ''' prints message when an instance is deleted '''
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
+
         ''' returns the biggest rectangle based on the area '''
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
