@@ -5,82 +5,75 @@ Module test for module stated above
 ==============
 SUCCESS CASES:
 ==============
-
-#First impor the module in questuion
+#first import the function:
 
     >>> MyList = __import__('1-my_list').MyList
 
-#Standard usage
-
+Test ints (program assumes all elements will be type int):
     >>> my_list = MyList()
-    >>> type(my_list)
-    <class '1-my_list.MyList'>
-
-::
-
+    >>> my_list.append(3)
+    >>> my_list.append(50)
+    >>> my_list.append(-1)
     >>> print(my_list)
+    [3, 50, -1]
+    >>> my_list.print_sorted()
+    [-1, 3, 50]
+    >>> print(my_list)
+    [3, 50, -1]
+
+    >>> another_list = MyList()
+    >>> another_list.append(300)
+    >>> another_list.append(50)
+    >>> another_list.append(-1)
+    >>> print(another_list)
+    [300, 50, -1]
+    >>> another_list.print_sorted()
+    [-1, 50, 300]
+    >>> print(another_list)
+    [300, 50, -1]
+
+    >>> l = MyList()
+    >>> l.append(-300)
+    >>> l.append(50)
+    >>> l.append(-1)
+    >>> print(l)
+    [-300, 50, -1]
+    >>> id(l) is not id(l.print_sorted())
+    [-300, -1, 50]
+    True
+
+Test list with only one element:
+    >>> solo = MyList()
+    >>> solo.append(-99999)
+    >>> print(solo)
+    [-99999]
+    >>> solo.print_sorted()
+    [-99999]
+    >>> print(solo)
+    [-99999]
+
+Test list with no elements:
+    >>> empty = MyList()
+    >>> print(empty)
+    []
+    >>> empty.print_sorted()
     []
 
-::
+Test type, isinstance, issubclass:
+    >>> type(MyList())
+    <class '1-my_list.MyList'>
 
-    >>> my_list = MyList()
-    >>> my_list.append(1)
-    >>> my_list.append(4)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> my_list.append(5)
-    >>> print(my_list)
-    [1, 4, 2, 3, 5]
+    >>> isinstance(MyList, object)
+    True
 
-::
+    >>> isinstance(MyList, list)
+    False
 
-    >>> my_list = MyList([1, 2, 3])
-    >>> print(my_list)
-    [1, 2, 3]
+    >>> issubclass(MyList, list)
+    True
 
-::
-modifying list
-
-    >>> my_list[1] = 6
-    >>> print(my_list)
-    [1, 6, 2, 3, 5]
-
-#test removing an element using remove method
-
-::
-
-    >>> my_list.remove(6)
-    >>> print(my_list)
-    [1, 2, 3, 5]
-
-
-::
-
-    >>> my_list = MyList()
-    >>> print(my_list.print_sorted)
-    <bound method MyList.print_sorted of []>
-
-::
-
-    >>> my_list.print_sorted
-    <bound method MyList.print_sorted of [1, 4, 2, 3, 5]>
-
-::
-
-    >>> my_list = MyList()
-    >>> my_list.append("Edward")
-    >>> my_list.append("Ortiz")
-    >>> my_list.append("Jhon")
-    >>> my_list.append("Doe")
-    >>> my_list.append("Mr Puffles")
-    >>> print(my_list)
-    ['Edward', 'Ortiz', 'Jhon', 'Doe', 'Mr Puffles']
-
-::
-
-    >>> my_list.print_sorted()
-    ['JaneDoe', 'Eys', 'grand', 'steps', 'Grand']
-
+    >>> 'print_sorted' in dir(MyList)
+    True
 ==========
 FAIL CASES
 ==========
