@@ -15,6 +15,7 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
+        '''Returns dictionary description with simple data structure'''
 
         if(type(attrs) == list and all(type(element) == str
                                        for element in attrs)):
