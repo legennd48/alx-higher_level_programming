@@ -5,7 +5,7 @@ Returns a list of integer lists representing Pascal's triangle of a given size
 """
 
 
-def generate_pascals_triangle(n):
+def pascal_triangle(n):
     """
     Generates Pascal's triangle up to the given number of rows.
 
