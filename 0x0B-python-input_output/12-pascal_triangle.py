@@ -13,7 +13,7 @@ def generate_pascals_triangle(n):
         n (int): Number of rows to generate.
 
     Returns:
-        List[List[int]]: A list of integer lists representing Pascal's triangle.
+        List[List[int]]: A list of integer lists dat reps Pascal's triangle.
     """
     triangle = [[1]]  # Initialize with the first row
     while len(triangle) != n:
