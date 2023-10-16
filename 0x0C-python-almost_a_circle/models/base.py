@@ -36,7 +36,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """ writes the JSON string representation of list_objs to a file:"""
-         name = cls.__name__ + ".json"
+        name = cls.__name__ + ".json"
 
         with open(name, "w") as f:
             if list_objs is None:
@@ -57,14 +57,14 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ returns an instance with all attributes already set: """
-         if cls.__name__ == "Square":
+        if cls.__name__ == "Square":
             dummy = cls(1)
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
         dummy.update(**dictionary)
         return (dummy)
 
-     @classmethod
+    @classmethod
     def load_from_file(cls):
         """Return a list of instanced from a file of JSON strings.
         Reads from `<cls.__name__>.json`.
