@@ -3,6 +3,8 @@
 Module: 2. First Rectangle
  class Rectangle that inherits from Base
 '''
+
+
 import models.base
 
 
@@ -13,7 +15,7 @@ class Rectangle(Base):
         Args:
             width (int): width of rect
             height (int): Height of Rectangle
-            x,
+            x (int):
             y
             id
         '''
@@ -35,7 +37,7 @@ class Rectangle(Base):
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         elif value <= 0:
-            raise ValueError("width must be greater than 0")
+            raise ValueError("width must be > 0")
         else:
             self.__width = value
 
@@ -50,7 +52,7 @@ class Rectangle(Base):
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         elif value <= 0:
-            raise ValueError("height must be greater than 0")
+            raise ValueError("height must be > 0")
         else:
             self.__height = value
 
@@ -64,9 +66,9 @@ class Rectangle(Base):
     def x(self, value):
         ''' x coordinate setter '''
         if not isinstance(value, int):
-            raise TypeError("coordinamte 'x' must be an integer")
+            raise TypeError("x must be an integer")
         elif value <= 0:
-            raise ValueError("coordinate 'x' must be greater than 0")
+            raise ValueError("x must be >= 0")
         else:
             self.__x = value
 
@@ -79,8 +81,51 @@ class Rectangle(Base):
     def y(self, value):
         ''' coordinate 'y' setter '''
         if not isinstance(value, int):
-            raise TypeError("coordinate 'y' must be an integer")
+            raise TypeError("y must be an integer")
         elif value <= 0:
-            raise ValueError("coordinate 'y' must be greater than 0")
+            raise ValueError("y must be >= 0")
         else:
             self.__y = value
+
+    def area(self):
+        ''' Clalculates the area of the Rectangle '''
+        return (self.height * self.width)
+
+    def display(self):
+        ''' Displays a pictorial rep of the rectangle using # '''
+        print("\n" * self.__y +
+              "\n".join(" " * self.__x + "#" * self.__width
+                        for h in range(self.__height)))
+    def __str__(self):
+        ''' overiding str mothod to display message'''
+        return ("[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height))
+
+    def update(self, *args, **kwargs):
+        '''
+        Assignes new values to the attribute id, width, height, x and y
+        This change may be done via args or kwargs
+        '''
+        if args:
+            for index, value in enumerate(args, start=1):
+                if index == 1:
+                    self.id = value
+                elif index == 2:
+                    self.width = value
+                elif index == 3:
+                    self.height = value
+                elif index == 4:
+                    self.x = value
+                else:
+                    self.y = value
+        else:
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
