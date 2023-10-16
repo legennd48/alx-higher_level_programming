@@ -55,7 +55,6 @@ class Rectangle(Base):
         else:
             self.__height = value
 
-
     @property
     def x(self):
         ''' c0ordinate x getter '''
@@ -95,8 +94,10 @@ class Rectangle(Base):
         print("\n" * self.__y +
               "\n".join(" " * self.__x + "#" * self.__width
                         for h in range(self.__height)))
+
     def __str__(self):
         ''' overiding str mothod to display message'''
+
         return ("[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.__x, self.__y, self.__width, self.__height))
 

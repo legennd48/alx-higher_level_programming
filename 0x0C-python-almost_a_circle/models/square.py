@@ -4,6 +4,7 @@ Module: 10. And now, the Square! to 12. Square update
 class square
 '''
 
+
 class Square(Rectangle):
     ''' class square that inherits from class rextangle '''
     def __init__(self, size, x=0, y=0, id=None):
@@ -39,7 +40,7 @@ class Square(Rectangle):
         if args:
             for index, value in enumerate(args, start=1):
                 if index == 1:
-                    if value == None:
+                    if value is None:
                         self.__init__(self.size, self.x, self.y)
                     else:
                         self.id = value
@@ -51,7 +52,7 @@ class Square(Rectangle):
                     self.y = value
         else:
             if "id" in kwargs:
-                if kwargs["id"] == None:
+                if kwargs["id"] is None:
                     self.__init__(self.size, self.x, self.y)
                 else:
                     self.id = kwargs["id"]
