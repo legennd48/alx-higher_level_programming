@@ -3,9 +3,9 @@
 Module: 1. Base class
 the “base” of all other classes in this project
 '''
+import turtle
 import json
 import csv
-import turtle
 
 
 class Base:
@@ -93,3 +93,44 @@ class Base:
                         [obj.id, obj.width, obj.height, obj.x, obj.y])
                 if cls.__name__ == "Square":
                     csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draws shape using the turtle module.
+
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+        drawing_turtle = turtle.Turtle()
+        drawing_turtle.screen.bgcolor("#b7312c")
+        drawing_turtle.pensize(3)
+        drawing_turtle.shape("turtle")
+
+        drawing_turtle.color("#ffffff")
+        for rectangle in list_rectangles:
+            drawing_turtle.showturtle()
+            drawing_turtle.up()
+            drawing_turtle.goto(rectangle.x, rectangle.y)
+            drawing_turtle.down()
+            for _ in range(2):
+                drawing_turtle.forward(rectangle.width)
+                drawing_turtle.left(90)
+                drawing_turtle.forward(rectangle.height)
+                drawing_turtle.left(90)
+            drawing_turtle.hideturtle()
+
+        drawing_turtle.color("#b5e3d8")
+        for square in list_squares:
+            drawing_turtle.showturtle()
+            drawing_turtle.up()
+            drawing_turtle.goto(square.x, square.y)
+            drawing_turtle.down()
+            for _ in range(2):
+                drawing_turtle.forward(square.width)
+                drawing_turtle.left(90)
+                drawing_turtle.forward(square.height)
+                drawing_turtle.left(90)
+            drawing_turtle.hideturtle()
+
+        turtle.exitonclick()
