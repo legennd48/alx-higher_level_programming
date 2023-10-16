@@ -5,7 +5,7 @@ the “base” of all other classes in this project
 '''
 
 
-class Base:
+class Base():
     ''' Base class '''
     __nb_objects = 0
 
