@@ -3,10 +3,14 @@
 Module: 1. Base class
 the “base” of all other classes in this project
 '''
+import json
+import csv
+import turtle
 
 
-class Base():
+class Base:
     ''' Base class '''
+
     __nb_objects = 0
 
     def __init__(self, id=None):
