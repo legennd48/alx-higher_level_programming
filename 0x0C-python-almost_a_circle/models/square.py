@@ -3,6 +3,7 @@
 Module: 10. And now, the Square! to 12. Square update
 class square
 '''
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
