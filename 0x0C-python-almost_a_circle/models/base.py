@@ -135,6 +135,7 @@ class Base:
 
         turtle.exitonclick()
 
+    @classmethod
     def load_from_file_csv(cls):
         """Return a list of classes instantiated from a CSV file."""
         filename = cls.__name__ + ".csv"
@@ -144,9 +145,9 @@ class Base:
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in list_dicts]
-                return [cls.create(**d) for d in list_dicts]
+                list_dictionaries = csv.DictReader(csvfile, fieldnames=fieldnames)
+                list_dictionaries = [dict([(i, int(j)) for i, j in dicti.items()])
+                                     for dicti in list_dictionaries]
+                return [cls.create(**dicti) for dicti in list_dictionaries]
         except IOError:
             return []
