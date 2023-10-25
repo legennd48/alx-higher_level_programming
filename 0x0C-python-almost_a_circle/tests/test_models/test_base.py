@@ -462,13 +462,16 @@ class TestBase_save_to_file_csv(unittest.TestCase):
 
     def test_save_to_file__csv_None(self):
         Square.save_to_file_csv(None)
-        with open("Square.csv", "r") as f:
-            self.assertEqual("[]", f.read())
+        with open("Square.csv", "r") as file:
+            content = file.read()
+            self.assertEqual("", content)
 
     def test_save_to_file_csv_empty_list(self):
+        """Test save_to_file_csv with an empty list."""
         Square.save_to_file_csv([])
-        with open("Square.csv", "r") as f:
-            self.assertEqual("[]", f.read())
+        with open("Square.csv", "r") as file:
+            content = file.read()
+            self.assertEqual('', content)
 
     def test_save_to_file_csv_no_args(self):
         with self.assertRaises(TypeError):

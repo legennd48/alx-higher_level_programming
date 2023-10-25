@@ -80,19 +80,20 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        '''
-        Serializes and deserializes in CSV:
-        '''
-        file_name = cls.__name__ + ".csv"
+        """Serializes list_objs in CSV format and saves it to a file."""
+        filename = cls.__name__ + ".csv"
 
-        with open(file_name, 'w', newline='') as file_writer:
+        with open(filename, 'w', newline='') as file_writer:
             csv_writer = csv.writer(file_writer)
-            for obj in list_objs:
-                if cls.__name__ == "Rectangle":
-                    csv_writer.writerow(
-                        [obj.id, obj.width, obj.height, obj.x, obj.y])
-                if cls.__name__ == "Square":
-                    csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+            if list_objs:
+                for obj in list_objs:
+                    if cls.__name__ == "Rectangle":
+                        csv_writer.writerow([obj.id, obj.width,
+                                             obj.height, obj.x, obj.y])
+                    if cls.__name__ == "Square":
+                        csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+            else:
+                file_writer.write("")
 
     @staticmethod
     def draw(list_rectangles, list_squares):
