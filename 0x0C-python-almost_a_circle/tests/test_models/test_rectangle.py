@@ -108,3 +108,6 @@ class TestRectangle(unittest.TestCase):
             # Updating width with a negative value should raise a ValueError
         with self.assertRaises(ValueError):
             rectangle.update(width=-1)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -65,3 +65,6 @@ class TestSquare(unittest.TestCase):
         expected_dict = {"id": 1, "size": 10, "x": 2, "y": 3}
 
         self.assertEqual(square.to_dictionary(), expected_dict)
+
+if __name__ == "__main__":
+    unittest.main()
