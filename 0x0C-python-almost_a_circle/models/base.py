@@ -145,8 +145,10 @@ class Base:
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                list_dictionaries = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dictionaries = [dict([(i, int(j)) for i, j in dicti.items()])
+                list_dictionaries = csv.DictReader(csvfile,
+                                                   fieldnames=fieldnames)
+                list_dictionaries = [dict([(i,
+                                            int(j))for i, j in dicti.items()])
                                      for dicti in list_dictionaries]
                 return [cls.create(**dicti) for dicti in list_dictionaries]
         except IOError:
