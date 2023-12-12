@@ -1,11 +1,13 @@
 #!/usr/bin/node
 
-let fileA = process.argv[2];
-let fileB = process.argv[3];
-let fileC = process.argv[4];
 const fs = require('fs');
 
-let textA = fs.readFileSync(fileA, 'utf8');
-let textB = fs.readFileSync(fileB, 'utf8');
+const firstFilePath = process.argv[2];
+const secondFilePath = process.argv[3];
+const outputFilePath = process.argv[4];
 
-fs.writeFileSync(fileC, textA + textB);
+const contentFromFirstFile = fs.readFileSync(firstFilePath, 'utf8');
+const contentFromSecondFile = fs.readFileSync(secondFilePath, 'utf8');
+const concatenatedContent = contentFromFirstFile + contentFromSecondFile;
+
+fs.writeFileSync(outputFilePath, concatenatedContent);
