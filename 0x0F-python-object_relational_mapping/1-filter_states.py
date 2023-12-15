@@ -21,7 +21,7 @@ if __name__ == "__main__":
     # creating cursor
     cursor = conn.cursor()
     # query
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id ASC"
     # execute query
     cursor.execute(query)
 
