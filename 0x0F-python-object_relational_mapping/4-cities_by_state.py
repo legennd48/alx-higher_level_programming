@@ -21,8 +21,8 @@ if __name__ == "__main__":
     cursor = conn.cursor()
     qry = """
     SELECT cities.id, cities.name, states.name
-    FROM cities
-    JOIN states ON cities.id = states.id
+    FROM states
+    INNER JOIN cities ON states.id = cities.state_id
     ORDER BY cities.id ASC
     """
     cursor.execute(qry)
