@@ -20,8 +20,10 @@ if __name__ == "__main__":
     conn = MySQLdb.connect(host=host, port=port, user=userName, passwd=pw,
                            db=dbName)
     cursor = conn.cursor()
-    qry = "SELECT * FROM states WHERE name=%s ORDER BY states.id ASC"
-    cursor.execute(qry, (searchd,))
+    qry = """SELECT * FROM states
+             WHERE name='{}'
+             ORDER BY states.id ASC""".format(searchd)
+    cursor.execute(qry)
     result = cursor.fetchall()
     for row in result:
         print(row)
