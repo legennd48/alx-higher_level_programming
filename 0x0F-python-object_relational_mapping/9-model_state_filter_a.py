@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''
-Module: 8. First state
-prints the first State object from the database
+Module: 9. Contains `a`
+lists all State objects that contain the letter a from the database
 '''
 
 from model_state import Base, State
@@ -20,18 +20,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    '''
-    this prints only the first row thanks to the slice
-    for instance in session.query(State).order_by(State.id)[:1]:
+    for instance in session.query(State).filter(
+            State.name.like('%a%')).order_by(State.id):
         print('{}: {}'.format(instance.id, instance.name))
-    '''
-    # Query first row:
-    instance = session.query(State).first()
-
-    # condition to check that row is not empty
-    if instance:
-        print('{}: {}'.format(instance.id, instance.name))
-    else:
-        print('Nothing')
 
     session.close()
