@@ -21,8 +21,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    rows = session.query(City).order_by(City.id).all()
-    for city in rows:
-        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+    rows = session.query(State).order_by(State.id).all()
+    for instance in rows:
+        for cityI in instance.cities:
+            print(cityI.id, cityI.name, sep=": ", end="")
+            print(" -> " + instance.name)
 
     session.close()
