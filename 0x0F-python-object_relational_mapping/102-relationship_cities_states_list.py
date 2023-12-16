@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module 16. List relationship
+Module: 17. From city
 """
 
 from sys import argv
@@ -21,10 +21,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    rows = session.query(State).order_by(State.id).all()
-    for state in rows:
-        print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
-            print("    {}: {}".format(city.id, city.name))
+    rows = session.query(City).order_by(City.id).all()
+    for city in rows:
+        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
 
     session.close()
