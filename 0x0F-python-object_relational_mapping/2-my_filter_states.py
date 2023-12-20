@@ -22,7 +22,7 @@ if __name__ == "__main__":
                            db=dbName)
     cursor = conn.cursor()
     qry = """SELECT * FROM states
-             WHERE name='{}'
+             WHERE name LIKE BINARY '{}'
              ORDER BY states.id ASC""".format(searchd)
     cursor.execute(qry)
     result = cursor.fetchall()
