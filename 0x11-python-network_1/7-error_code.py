@@ -10,7 +10,7 @@ from sys import argv
 
 if __name__ == "__main__":
     url = argv[1]
-    req = requests.post(url)
+    req = requests.get(url)
     code = req.status_code
 
     if code >= 400:
