@@ -11,7 +11,7 @@ from urllib.parse import urlencode
 
 if __name__ == "__main__":
     if len(argv) != 3:
-        print("Usage: ./1-hbtn_header.py <URL> <email>")
+        print("Usage: ./2-post_email.py <URL> <email>")
     else:
         url = argv[1]
         email = {'email': argv[2]}
