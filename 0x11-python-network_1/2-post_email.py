@@ -14,7 +14,7 @@ if __name__ == "__main__":
         print("Usage: ./1-hbtn_header.py <URL> <email>")
     else:
         url = argv[1]
-        email = {'email' : argv[2]}
+        email = {'email': argv[2]}
         data = urlencode(email).encode('ascii')
         req = Request(url, data)
 
