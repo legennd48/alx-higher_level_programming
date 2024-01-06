@@ -8,8 +8,9 @@ from sys import argv
 import requests
 
 
-url = argv[1]
-req = requests.get(url)
-x_id = req.headers.get('X-Request-Id')
+if __name__ == "__main__":
+    url = argv[1]
+    req = requests.get(url)
+    x_id = req.headers.get('X-Request-Id')
 
-print("{}".format(x_id))
+    print("{}".format(x_id))
