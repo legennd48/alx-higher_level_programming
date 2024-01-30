@@ -1,0 +1,14 @@
+#!/usr/bin/node
+/* display the status code of a GET request. */
+const fs = require('fs');
+const request = require('request');
+const url = process.argv[2];
+const store = process.argv[3];
+
+request.get(url).on('response', function (response) {
+  fs.writeFile(store, response.body, 'utf8', function (err) {
+    if (err) {
+      console.error(err);
+    }
+  });
+});
