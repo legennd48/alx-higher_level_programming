@@ -1,14 +1,17 @@
 #!/usr/bin/node
-/* display the status code of a GET request. */
 
+const apiUrl = process.argv[2];
 const request = require('request');
-const id = process.argv[2];
-const url = 'https://swapi-api.alx-tools.com/api/films/'
 
-request(url, function (err, httpResponse, body) {
-  if (err) {
-    console.error(err);
+request(apiUrl, function (error, response, responseBody) {
+  if (error) console.log(error);
+
+  let charactersList = [];
+
+  for (const film of JSON.parse(responseBody).results) {
+    charactersList = charactersList.concat(film.characters);
   }
-  
-  console.log(JSON.parse(body).title);
+
+  const uniqueCharacters = charactersList.filter(character => character.includes('18'));
+  console.log(uniqueCharacters.length);
 });

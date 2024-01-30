@@ -1,0 +1,17 @@
+#!/usr/bin/node
+/* display the status code of a GET request. */
+
+const request = require('request');
+const url = process.argv[2];
+
+request(url, function (err, httpResponse, body) {
+  if (err) {
+    console.error(err);
+  }
+  let features = []
+  for (const film of JSON.parse(body).results) {
+    features = features.concat(film.characters);
+  }
+  const singles = features.filter(x => x.includes('18'));
+  console.log(singles.lenght);
+});
