@@ -3,11 +3,12 @@
 
 const request = require('request');
 const id = process.argv[2];
-const url = 'https://swapi-api.alx-tools.com/api/films/' + id;
+const url = 'https://swapi-api.alx-tools.com/api/films/'
 
-request(url, function (err, response, body) {
+request(url, function (err, httpResponse, body) {
   if (err) {
     console.error(err);
   }
+  
   console.log(JSON.parse(body).title);
 });
