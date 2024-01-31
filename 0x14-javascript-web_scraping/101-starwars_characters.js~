@@ -1,0 +1,25 @@
+#!/usr/bin/node
+
+const request = require('request');
+
+function fetchCharacterNames(urls, index) {
+  if (index === urls.length) {
+    return;
+  }
+
+  request(urls[index], function (error, response, body) {
+    if (error) {
+      console.error(error);
+    }
+    console.log(JSON.parse(body).name);
+    fetchCharacterNames(urls, index + 1);
+  });
+}
+
+request('http://swapi.co/api/films/' + process.argv[2], function (error, response, body) {
+  if (error) {
+    console.error(error);
+  }
+  const characterUrls = JSON.parse(body).characters;
+  fetchCharacterNames(characterUrls, 0);
+});
