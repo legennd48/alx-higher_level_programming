@@ -1,0 +1,1 @@
+Learning jQuery as a full-stack SWE sudent
